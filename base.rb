@@ -2,6 +2,17 @@ if yes?("Do you want to use RSpec for testing?")
   plugin "rspec", :git => "git://github.com/dchelimsky/rspec.git"
   plugin "rspec-rails", :git => "git://github.com/dchelimsky/rspec-rails.git"
   generate :rspec
+  
+  if yes?("Do you want to add a 'welcome' controller (index action only)?")
+    generate :rspec_controller, "welcome", "index"
+    route "map.root :controller => 'welcome'"
+  end
+  
+end
+
+if yes?("Do you want to add a 'welcome' controller (index action only)?")
+  generate :controller, "welcome", "index"
+  route "map.root :controller => 'welcome'"
 end
 
 git :init
