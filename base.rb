@@ -4,13 +4,13 @@ if yes?("Do you want to use RSpec for testing?")
   generate :rspec
 end
 
-generate :nifty_layout
-
 git :init
 
 run "echo 'TODO add readme content' > README"
 run "touch tmp/.gitignore log/.gitignore vendor/.gitignore"
 run "cp config/database.yml config/example_database.yml"
+
+run "cp ~/.rails/lib/migration_helpers.rb lib/migration_helpers.rb"
 
 file ".gitignore", <<-END
 log/*.log
